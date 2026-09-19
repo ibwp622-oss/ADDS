@@ -109,31 +109,25 @@
 /* CONFIGURATION WITH 3 UTM LINKS */
 const CONFIG = {
   targetLinks: [
-    "https://bahir369.url369x.top/bahi22wajid/?utm_source=Noor&utm_medium=M102",
+    "https://bahir369.url369x.top/bahi22wajid/?utm_source=Noor&utm_medium=MM",
     "https://bahir369.url369x.top/bahi22wajid/?utm_source=Noor&utm_medium=M1",
-    "https://https://bahir369.url369x.top/bahi22wajid/?utm_source=Noor&utm_medium=MM"
+    "https://bahir369.url369x.top/bahi22wajid/?utm_source=Noor&utm_medium=M102"
   ],
   userImage: "image_03.webp"
 };
 
 let selectedTargetLink = "";
 
-/* GET NEXT ROTATING LINK FOR USER */
+/* GET ROTATING LINK BASED ON TIME / HITS */
 function getTargetLink() {
-  let currentIndex = parseInt(localStorage.getItem('utm_link_index') || '0');
-  
-  // select current link
-  const link = CONFIG.targetLinks[currentIndex % CONFIG.targetLinks.length];
-  
-  // update index for next visit
-  localStorage.setItem('utm_link_index', (currentIndex + 1) % CONFIG.targetLinks.length);
-  
-  return link;
+  // وقت اور سیکنڈز کی بنیاد پر انڈیکس کی نوبت (1 -> 2 -> 3) بدلے گی
+  let index = Math.floor(Date.now() / 1000) % CONFIG.targetLinks.length;
+  return CONFIG.targetLinks[index];
 }
 
 /* MAIN LOGIC */
 (function () {
-  // Get active link based on rotation history
+  // Get active link based on rotation logic
   selectedTargetLink = getTargetLink();
 
   // Show image screen and start countdown
