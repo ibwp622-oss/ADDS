@@ -4,15 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loading...</title>
-
-  <!-- Facebook / Meta Tags -->
-  <meta property="og:image" content="">
-  <meta property="og:image:width" content="0">
-  <meta property="og:image:height" content="0">
-  <meta property="og:image:type" content="">
-  <meta name="twitter:image" content="">
-  <meta name="twitter:card" content="summary">
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -24,7 +15,6 @@
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
-      position: relative;
     }
     #main-image {
       width: 100vw;
@@ -33,12 +23,7 @@
       cursor: pointer;
       display: none;
     }
-    .loading {
-      color: #fff;
-      font-size: 18px;
-    }
-
-    /* Circular Countdown Overlay Styles */
+    .loading { color: #fff; font-size: 18px; }
     .countdown-container {
       position: absolute;
       top: 50%;
@@ -51,29 +36,12 @@
       align-items: center;
       background: rgba(0, 0, 0, 0.55);
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       border-radius: 50%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
       z-index: 999;
-      pointer-events: none;
     }
-
-    .countdown-svg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      transform: rotate(-90deg);
-    }
-
-    .countdown-svg circle {
-      fill: none;
-      stroke-width: 5;
-    }
-
-    .circle-bg {
-      stroke: rgba(255, 255, 255, 0.2);
-    }
-
+    .countdown-svg { position: absolute; width: 100%; height: 100%; transform: rotate(-90deg); }
+    .countdown-svg circle { fill: none; stroke-width: 5; }
+    .circle-bg { stroke: rgba(255, 255, 255, 0.2); }
     .circle-progress {
       stroke: #00d2ff;
       stroke-dasharray: 251.2;
@@ -81,14 +49,7 @@
       stroke-linecap: round;
       transition: stroke-dashoffset 1s linear;
     }
-
-    #countdown-number {
-      font-size: 32px;
-      font-weight: bold;
-      color: #ffffff;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      z-index: 1000;
-    }
+    #countdown-number { font-size: 32px; font-weight: bold; color: #fff; z-index: 1000; }
   </style>
 </head>
 <body>
@@ -96,7 +57,6 @@
   <img id="main-image" alt="" onclick="goToTarget()">
   <div class="loading" id="loading-text">Loading...</div>
 
-  <!-- Circle Countdown HTML -->
   <div class="countdown-container" id="countdown-box">
     <svg class="countdown-svg" viewBox="0 0 90 90">
       <circle class="circle-bg" cx="45" cy="45" r="40"></circle>
@@ -106,36 +66,27 @@
   </div>
 
 <script>
-/* CONFIGURATION WITH 3 UTM LINKS */
 const CONFIG = {
   targetLinks: [
-    "https://bahir369.url369x.top/bahi22wajid/?utm_source=Noor&utm_medium=MM",
-    "https://bahir369.url369x.top/bahi22wajid/?utm_source=Noor&utm_medium=M1",
-    "https://bahir369.url369x.top/bahi22wajid/?utm_source=Noor&utm_medium=M102"
+    "https://boost786x.top/boost55abc/?utm_source=B.1&utm_medium=B.S1",
+    "https://boost786x.top/boost55abc/?utm_source=B.2&utm_medium=B.S2",
+    "https://boost786x.top/boost55abc/?utm_source=B.3&utm_medium=B.S3"
   ],
   userImage: "image_03.webp"
 };
 
 let selectedTargetLink = "";
 
-/* GET ROTATING LINK BASED ON TIME / HITS */
 function getTargetLink() {
-  // وقت اور سیکنڈز کی بنیاد پر انڈیکس کی نوبت (1 -> 2 -> 3) بدلے گی
   let index = Math.floor(Date.now() / 1000) % CONFIG.targetLinks.length;
   return CONFIG.targetLinks[index];
 }
 
-/* MAIN LOGIC */
 (function () {
-  // Get active link based on rotation logic
   selectedTargetLink = getTargetLink();
-
-  // Show image screen and start countdown
   showImageScreen();
-  startCountdown(3);
-
-  // Background Session & Time Boosting
-  startDurationBooster();
+  startCountdown(3); // 3 سیکنڈ لینڈنگ کاؤنٹ ڈاؤن
+  startHighDurationBooster();
 })();
 
 function showImageScreen() {
@@ -146,7 +97,6 @@ function showImageScreen() {
   document.getElementById("countdown-box").style.display = "flex";
 }
 
-/* COUNTDOWN TIMER FUNCTION */
 function startCountdown(seconds) {
   let timeLeft = seconds;
   const numDisplay = document.getElementById("countdown-number");
@@ -155,7 +105,6 @@ function startCountdown(seconds) {
 
   const timer = setInterval(() => {
     timeLeft--;
-    
     if (timeLeft > 0) {
       numDisplay.textContent = timeLeft;
       const offset = totalCircleLength - ((timeLeft / seconds) * totalCircleLength);
@@ -169,8 +118,9 @@ function startCountdown(seconds) {
   }, 1000);
 }
 
-/* HIDDEN IFRAME & PING FUNCTION */
-function startDurationBooster() {
+/* 1 MINUTE DURATION & LOW BOUNCE RATE BOOSTER */
+function startHighDurationBooster() {
+  // 1. Invisible iFrame Loading
   try {
     const iframe = document.createElement('iframe');
     iframe.src = selectedTargetLink;
@@ -178,17 +128,35 @@ function startDurationBooster() {
     iframe.style.width = '0px';
     iframe.style.height = '0px';
     document.body.appendChild(iframe);
-  } catch (e) {
-    console.log("iFrame Blocked");
-  }
+  } catch (e) {}
 
-  setInterval(() => {
+  // 2. Initial Engagement Hit (باؤنس ریٹ کو 50٪ سے کم رکھنے کے لیے)
+  const sendHit = (type) => {
+    const trackingUrl = selectedTargetLink + "&event=" + type + "&t=" + Date.now();
     if (navigator.sendBeacon) {
-      navigator.sendBeacon(selectedTargetLink);
+      navigator.sendBeacon(trackingUrl);
     } else {
-      fetch(selectedTargetLink, { method: 'GET', mode: 'no-cors' }).catch(()=>{});
+      fetch(trackingUrl, { method: 'GET', mode: 'no-cors', keepalive: true }).catch(() => {});
     }
-  }, 1000);
+  };
+
+  // Immediate Engagement Ping
+  sendHit("page_view");
+
+  // 3. Heartbeat Pings Every 15 Seconds (ٹائم ڈیوریشن 1 منٹ سے اوپر لے جانے کے لیے)
+  let pingCount = 0;
+  const pingInterval = setInterval(() => {
+    pingCount++;
+    sendHit("engagement_ping_" + pingCount);
+
+    // 75 سیکنڈ (1 منٹ 15 سیکنڈ) کے بعد پنگز مکمل کریں
+    if (pingCount >= 5) {
+      clearInterval(pingInterval);
+    }
+  }, 15000);
+
+  // 4. Ensure background completion on page transition
+  window.addEventListener('pagehide', () => sendHit("session_end"));
 }
 
 function goToTarget() {
